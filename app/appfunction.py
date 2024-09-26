@@ -206,6 +206,7 @@ def stream_response():
         for new_content in openai_stream_function(productinfo):  # OpenAIのストリーミング関数を呼び出す
             buffer += new_content  # バッファに追加
             buffer = buffer.replace(' ', '')
+            #print(buffer)
             # 完全なタグを探して送信
             while True:
                 # バッファ内の完全なタグを探す
@@ -281,7 +282,7 @@ def openai_stream_function(productinfo):
     )
     for chunk in stream:
         if chunk.choices[0].delta.content is not None:
-            #print(chunk.choices[0].delta.content, end="")
+            print(chunk.choices[0].delta.content, end="")
             yield chunk.choices[0].delta.content  # ストリーミングされたコンテンツを返す
     
 # Flaskのルートにファイルを受け取るエンドポイントを作成 

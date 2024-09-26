@@ -1,2 +1,5 @@
+*.env
+*.tsv
+*.json
+*.md
 .venv
-*env
